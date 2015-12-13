@@ -33,18 +33,19 @@
 		
 	});
 	
-	/*	var carre = new Path.rectangle(){
-		point: point.random(), // Position aléatoire
+	var carre = new Path.Rectangle({
+		point: Point.random()* view.size, // Position aléatoire
 		size: [15, 15],
+		strokeColor: 'black',
 		fillColor : 'black'
-		
-	});*/ 
+	});
 	
 	/*  Ici manipulations des objets   */
 	
 	
 	ombre.opacity = 0.4;
 	
+	// si carre trop proche du bord le décalé
 	
 	
 	
@@ -54,7 +55,7 @@
 		bubble.position = view.center;
 		ombre.position = view.center;
 		ombre.position += new Point(-5, -5);
-		//carre.position = Point.random()* view.size;
+		carre.point = Point.random()* view.size;
 	}
 	
 	function onMouseMove(event) {

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+  <title>Buble</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.25/paper-full.js"></script>
+  <!--<script type="text/paperscript" src="paper.js" canvas="myCanvas"></script>-->
+  <script type="text/paperscript" canvas="myCanvas">
+	  // Faire apparaitre a des temps aléatoire des carré boost mais qui dure X seconds
+  // Faire des bonus de vitesse, de taille, de vie, de score
+  // Faire apparaitre des triangles avec direction qui game over si contact
+
+  
+  /*  Ici Déclaration des objets   */
+  
+	var bubble = new Path.Circle({
+		center: view.center,
+		radius: 20,
+		fillColor : 'red',
+		
+	});
+	
+	var ombre = new Path.Circle({
+		center: view.center,
+		radius: 8,
+		fillColor : 'white',
+		shadowColor: new Color(250, 250, 250),
+		shadowBlur: 10,
+		shadowOffset: new Point(5, 5)
+		
+	});
+	
+	/*	var carre = new Path.rectangle(){
+		point: point.random(), // Position aléatoire
+		size: [15, 15],
+		fillColor : 'black'
+		
+	});*/ 
+	
+	/*  Ici manipulations des objets   */
+	
+	
+	ombre.opacity = 0.4;
+	
+	
+	
+	
+	/*  Ici gestion des évenements   */
+
+	function onResize(event) {
+		bubble.position = view.center;
+		ombre.position = view.center;
+		ombre.position += new Point(-5, -5);
+		//carre.position = Point.random()* view.size;
+	}
+	
+	function onMouseMove(event) {
+	
+		var destination = event.point; 				//detecter la position de la mouse
+		var vector = destination - bubble.position; // Generer le vecteur de direction
+		vector.length = 50; 						// Donner une taille fixe au vecteur pour une vitesse fixe
+		bubble.position += vector / 30;				// Assigné le changement de position
+		ombre.position += vector / 30;
+		
+		
+		bubble.fillColor.hue += 1;
+	}
+	
+</script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  
+  
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</div>
+
+
+
+
+
+</body>
+</html>

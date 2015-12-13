@@ -10,6 +10,7 @@ window.onload = function(){
 /*  Ici Déclaration des objets   */
 
 
+
 	/*  creation de bubble   */
 var bubble = new Path.Circle({
 		center: view.center,
